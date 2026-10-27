@@ -1,0 +1,96 @@
+{
+ "actions": [],
+ "creation": "2026-10-27 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-10-27 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Erp Telegram Notify",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "name": "Telegram Notification Rule",
+ "autoname": "format:TGR-{####}",
+ "naming_rule": "Expression",
+ "field_order": [
+  "enabled",
+  "document_type",
+  "event",
+  "roles",
+  "sb_adv",
+  "condition",
+  "message"
+ ],
+ "fields": [
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Link",
+   "label": "Document Type",
+   "options": "DocType",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "event",
+   "fieldtype": "Select",
+   "label": "Notify When",
+   "options": "Workflow Action Required\nNew Document\nOn Submit",
+   "default": "Workflow Action Required",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "Workflow Action Required: notifies everyone whose role can act on the current workflow state, with action buttons. The other two notify the roles listed below."
+  },
+  {
+   "fieldname": "roles",
+   "fieldtype": "Table",
+   "label": "Roles to Notify",
+   "options": "Telegram Rule Role",
+   "depends_on": "eval:doc.event!='Workflow Action Required'",
+   "mandatory_depends_on": "eval:doc.event!='Workflow Action Required'"
+  },
+  {
+   "fieldname": "sb_adv",
+   "fieldtype": "Section Break",
+   "label": "Optional",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "condition",
+   "fieldtype": "Code",
+   "label": "Condition",
+   "options": "Python",
+   "description": "Only notify when true. Example: doc.grand_total > 10000 and doc.company == 'ACME'"
+  },
+  {
+   "fieldname": "message",
+   "fieldtype": "Text",
+   "label": "Custom Message",
+   "description": "Jinja + Telegram HTML (b, i, a only). Example: <b>{{ doc.name }}</b> from {{ doc.owner }}. Leave empty for the default message."
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  }
+ ]
+}

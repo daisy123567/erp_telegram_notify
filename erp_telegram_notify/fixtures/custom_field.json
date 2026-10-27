@@ -1,0 +1,13 @@
+[
+ {
+  "doctype": "Custom Field",
+  "dt": "User",
+  "fieldname": "telegram_chat_id",
+  "fieldtype": "Data",
+  "label": "Telegram Chat ID",
+  "insert_after": "mobile_no",
+  "read_only": 1,
+  "no_copy": 1,
+  "name": "User-telegram_chat_id"
+ }
+]
