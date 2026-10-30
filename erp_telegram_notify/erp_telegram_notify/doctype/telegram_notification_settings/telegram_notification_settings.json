@@ -1,0 +1,109 @@
+{
+ "actions": [],
+ "creation": "2026-10-30 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "issingle": 1,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-10-30 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Erp Telegram Notify",
+ "name": "Telegram Notification Settings",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "field_order": [
+  "enabled",
+  "sb_bot",
+  "bot_token",
+  "bot_username",
+  "cb1",
+  "connection_mode",
+  "site_url",
+  "sb_status",
+  "status",
+  "webhook_secret",
+  "last_update_id"
+ ],
+ "fields": [
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "default": "1"
+  },
+  {
+   "fieldname": "sb_bot",
+   "fieldtype": "Section Break",
+   "label": "Bot"
+  },
+  {
+   "fieldname": "bot_token",
+   "fieldtype": "Password",
+   "label": "Bot Token",
+   "reqd": 1,
+   "description": "From @BotFather (/newbot). Paste it here once. It is stored encrypted."
+  },
+  {
+   "fieldname": "bot_username",
+   "fieldtype": "Data",
+   "label": "Bot Username",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "connection_mode",
+   "fieldtype": "Select",
+   "label": "Connection Mode",
+   "options": "Webhook\nPolling",
+   "default": "Webhook",
+   "description": "Webhook: instant, needs a public https:// domain. Polling: works anywhere with no public address (button taps and linking can take up to a minute)."
+  },
+  {
+   "fieldname": "site_url",
+   "fieldtype": "Data",
+   "label": "Public Site URL",
+   "depends_on": "eval:doc.connection_mode=='Webhook'",
+   "description": "Your public https:// address, e.g. https://erp.company.com. Filled in automatically."
+  },
+  {
+   "fieldname": "sb_status",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Small Text",
+   "label": "Connection Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "webhook_secret",
+   "fieldtype": "Data",
+   "label": "Webhook Secret",
+   "read_only": 1,
+   "description": "Generated automatically. You never need to touch this."
+  },
+  {
+   "fieldname": "last_update_id",
+   "fieldtype": "Int",
+   "label": "Last Update ID",
+   "hidden": 1,
+   "read_only": 1,
+   "default": "0"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1
+  }
+ ]
+}

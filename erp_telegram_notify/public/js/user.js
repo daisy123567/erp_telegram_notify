@@ -1,4 +1,4 @@
-frappe.ui.form.on("User", {
+ppe.ui.form.on("User", {
 	refresh(frm) {
 		if (frm.doc.name !== frappe.session.user) return;
 		frm.add_custom_button(__("Link Telegram"), () => {
